@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import "../styles/productDetailStyle.css"
 import { addProductCartThunk } from '../store/slices/cartSlice';
 import CarruselProductRelations from '../components/CarruselProductRelations';
+import SucessModal from '../components/SucessModal';
 
 const ProductDetail = () => {
 
@@ -14,13 +15,16 @@ const ProductDetail = () => {
     const productList = useSelector(state => state.products);
     const productDetail = productList.find((product) => product.id === Number(id))
     const [categories, setCategories] = useState((productList.filter(product => product.category.id === productDetail.category.id)));
+    const [productSucessFul, setProductSucessFul] = useState(false); // Agregar el estado para modal product
 
     const addProduct = () => {
+        setProductSucessFul(false)
         const cart = {
             id: id,
             quantity: quantity
         }
         dispatch(addProductCartThunk(cart))
+        setProductSucessFul(true)
     }
 
     return (
@@ -79,6 +83,7 @@ const ProductDetail = () => {
                     <CarruselProductRelations category={categories} />
                 </div>
             </>)}
+            {productSucessFul && <SucessModal message={"your product has been added successfully"} />}
         </div>
     );
 };
