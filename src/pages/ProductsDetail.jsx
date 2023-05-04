@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Carousel, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -11,11 +11,11 @@ const ProductDetail = () => {
 
     const { id } = useParams();
     const dispatch = useDispatch()
+    
     const [quantity, setQuantity] = useState(1);
-    const productList = useSelector(state => state.products);
+    const [productList, setProductList] = useState(useSelector(state => state.products))
     const productDetail = productList.find((product) => product.id === Number(id))
-    const [categories, setCategories] = useState((productList.filter(product => product.category.id === productDetail.category.id)));
-    const [productSucessFul, setProductSucessFul] = useState(false); // Agregar el estado para modal product
+    const [categories, setCategories] = useState((productList.filter(product => product.category.id === productDetail.category.id)));    const [productSucessFul, setProductSucessFul] = useState(false); // Agregar el estado para modal product
 
     const addProduct = () => {
         setProductSucessFul(false)
@@ -72,15 +72,19 @@ const ProductDetail = () => {
                         <Button onClick={() => setQuantity(quantity + 1)} >+</Button>
                         <p>{quantity}</p>
                         <Button onClick={() => {
-                            if (quantity !== 1) { 
-                            setQuantity(quantity - 1)
+                            if (quantity !== 1) {
+                                setQuantity(quantity - 1)
                             }
                         }} >-</Button>
                         <Button className='addButton' onClick={addProduct} >add to cart <i className="fa-solid fa-cart-shopping"></i></Button>
                     </div>
                 </div>
                 <div>
-                    <CarruselProductRelations category={categories} />
+                    {
+                        categories.map(productCategory => (
+                            <h2 key={productCategory.id} >{productCategory.title}</h2>
+                        ))
+                    }
                 </div>
             </>)}
             {productSucessFul && <SucessModal message={"your product has been added successfully"} />}
