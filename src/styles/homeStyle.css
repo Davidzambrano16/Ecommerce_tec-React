@@ -1,0 +1,138 @@
+*{
+    font-size: 0.8rem;
+}
+
+.containerNavBar{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end !important;
+    gap: 1.5rem 1rem;
+}
+
+.navbar{
+    padding: 1rem 0rem;
+}
+
+.navbar-brand{
+    font-size: 0.8rem !important;
+}
+
+.navbar-brand > img{ 
+    width: 3.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+}
+
+.containerNavBar--cartButton{
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 0.5rem !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerNavBar--cartButton > i {
+    font-size: 1rem;
+    color: white;
+}
+
+.form-control{
+    height: 2.5rem;
+}
+
+.btn-outline-success{
+    height: 2.5rem;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteinerHome {
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.containerCarruselHome{
+    margin-top: 1rem;
+    border-bottom: solid 0.3rem rgb(54, 53, 62);
+    border-top: solid 0.3rem rgb(54, 53, 62);
+    width: 99vw;
+    height: 60vh;
+}
+
+.carousel{
+    height: 100% !important;
+}
+
+.carousel-inner{
+    height: 95%;
+}
+
+.carousel-item{
+    padding: 0 !important;
+    height: 100% !important;
+}
+
+.carousel-item > img{
+    height: 100%;
+    width: auto !important;
+}
+
+.carousel-indicators{
+    background-color:rgb(54, 53, 62) !important;
+}
+
+.conteinerFilter{
+    margin: 1rem;
+    display: flex;
+}
+
+.dropdown-toggle {
+    margin-left: 1rem;
+}
+
+.conteinerCard{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-top: 1rem;
+    gap: 2rem;
+}
+
+.card{
+    height: 50vh !important;
+    box-shadow: 0.1rem 0.1rem 0.5rem #4f4f64 !important;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0.1rem 0.1rem 0.5rem  #00005c !important; 
+  }
+
+.card--containerImg{
+    overflow: hidden;
+    padding: 0.5rem;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card--containerImg > img{
+    overflow: hidden;
+    max-height: 90%;
+    width: auto;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
