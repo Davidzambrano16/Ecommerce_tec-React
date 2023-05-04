@@ -55,7 +55,7 @@ const Login = () => {
             </Link>
             <CreateUserModal show={show} handleClose={handleClose} />
 
-            {loginSuccessful && <SucessModal />}
+            {loginSuccessful && <SucessModal message={"you have successfully logged in!"} />}
 
         </div>
     );

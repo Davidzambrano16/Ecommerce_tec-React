@@ -67,12 +67,16 @@ const ProductDetail = () => {
                     <div className='conteinerQuantity'>
                         <Button onClick={() => setQuantity(quantity + 1)} >+</Button>
                         <p>{quantity}</p>
-                        <Button onClick={() => setQuantity(quantity - 1)} >-</Button>
+                        <Button onClick={() => {
+                            if (quantity !== 1) { 
+                            setQuantity(quantity - 1)
+                            }
+                        }} >-</Button>
                         <Button className='addButton' onClick={addProduct} >add to cart <i className="fa-solid fa-cart-shopping"></i></Button>
                     </div>
                 </div>
                 <div>
-                        <CarruselProductRelations category={categories} />
+                    <CarruselProductRelations category={categories} />
                 </div>
             </>)}
         </div>
