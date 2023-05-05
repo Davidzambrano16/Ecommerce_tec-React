@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Carousel, Container } from 'react-bootstrap';
+import { Button, Card, Carousel, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import "../styles/productDetailStyle.css"
@@ -11,11 +11,11 @@ const ProductDetail = () => {
 
     const { id } = useParams();
     const dispatch = useDispatch()
-    
+
     const [quantity, setQuantity] = useState(1);
     const [productList, setProductList] = useState(useSelector(state => state.products))
     const productDetail = productList.find((product) => product.id === Number(id))
-    const [categories, setCategories] = useState((productList.filter(product => product.category.id === productDetail.category.id)));    const [productSucessFul, setProductSucessFul] = useState(false); // Agregar el estado para modal product
+    const [categories, setCategories] = useState((productList.filter(product => product.category.id === productDetail.category.id))); const [productSucessFul, setProductSucessFul] = useState(false); // Agregar el estado para modal product
 
     const addProduct = () => {
         setProductSucessFul(false)
@@ -79,10 +79,19 @@ const ProductDetail = () => {
                         <Button className='addButton' onClick={addProduct} >add to cart <i className="fa-solid fa-cart-shopping"></i></Button>
                     </div>
                 </div>
-                <div>
+                <div className='containerProductsRelatives'>
                     {
                         categories.map(productCategory => (
-                            <h2 key={productCategory.id} >{productCategory.title}</h2>
+                            <Card key={productCategory.id} style={{ width: '80%', height: "auto",alignItems: "center" }}>
+                                <Card.Img variant="top" src={productCategory.productImgs[0]}
+                                    style={{ maxHeight: '70%', width: "inherit", marginTop: "1rem" }} />
+                                <Card.Body>
+                                    <Card.Title>{productCategory.title}</Card.Title>
+                                    <Card.Text>
+                                        Price: {productCategory.price}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
                         ))
                     }
                 </div>
